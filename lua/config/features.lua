@@ -8,3 +8,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yank",
 })
 
+-- Add scroll support to Snacks picker
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "snacks-picker",
+  callback = function()
+    vim.keymap.set("n", "zl", "zl", { buffer = true })
+    vim.keymap.set("n", "zh", "zh", { buffer = true })
+  end,
+})

@@ -3,11 +3,11 @@
 ## Changes
 - [ ] Setup session support
 - [ ] Setup better markdown support
-- [ ] Add fuzzy find config folder
-- [ ] Setup terminal short keys
+- [x] Add fuzzy find config folder
+- [x] Setup terminal short keys
 
 ## Test
-- [ ] Telescope vs Picker
+- [ ] Telescope vs Picker vs FzfLua
 - [ ] Support for multiple projects
 
 

@@ -55,8 +55,9 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
--- Lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+-- Lazy/Mason
+map("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Mason" })
 
 map("n", "<C-q>", ":q<CR>", { desc = "Quit current window/buffer" })
 --map("n", "<C-e>", ":qa<CR>", { desc = "Quit all windows/buffers" })
@@ -104,4 +105,4 @@ map("n", "z9", ":set foldlevel=99<CR>", { desc = "Open all folds" })
 
 -- Terminal
 --map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
-map('t', 'jk', [[<C-\><C-n>]], { noremap = true })
+map("t", "jk", [[<C-\><C-n>]], { noremap = true })
