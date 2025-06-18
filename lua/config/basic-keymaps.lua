@@ -56,8 +56,8 @@ map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- Lazy/Mason
-map("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Lazy" })
-map("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Mason" })
+map("n", "<leader>zl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>zm", "<cmd>Mason<cr>", { desc = "Mason" })
 
 map("n", "<C-q>", ":q<CR>", { desc = "Quit current window/buffer" })
 --map("n", "<C-e>", ":qa<CR>", { desc = "Quit all windows/buffers" })
