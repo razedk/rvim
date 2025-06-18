@@ -6,7 +6,7 @@
 - [x] Setup better markdown support
 - [x] Add fuzzy find config folder
 - [x] Setup terminal short keys
-- [ ] Setup avante.nvim
+- [x] Setup avante.nvim
 
 ## Test
 

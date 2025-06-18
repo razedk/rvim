@@ -97,6 +97,7 @@ local function setup_auto_cmd()
 end
 
 return {
+	{ "folke/neoconf.nvim", cmd = "Neoconf", opts = {} },
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
@@ -155,19 +156,19 @@ return {
 			})
 
 			-- Configure language servers
-			vim.lsp.config("jdtls", {
-				settings = {
-					java = {
-						format = {
-							enabled = true,
-							settings = {
-								url = vim.fn.stdpath("config") .. "/java/beumer-eclipse-formatter.xml",
-								profile = "Crisplant formatter", -- This should match the profile name in the XML
-							},
-						},
-					},
-				},
-			})
+			-- vim.lsp.config("jdtls", {
+			-- 	settings = {
+			-- 		java = {
+			-- 			format = {
+			-- 				enabled = true,
+			-- 				settings = {
+			-- 					url = vim.fn.stdpath("config") .. "/java/beumer-eclipse-formatter.xml",
+			-- 					profile = "Crisplant formatter", -- This should match the profile name in the XML
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 
 			-- Enable language servers
 			vim.lsp.enable("lua_ls")
