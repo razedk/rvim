@@ -12,3 +12,4 @@
 
 - [ ] Telescope vs Picker vs FzfLua
 - [ ] Support for multiple projects
+  - [ ] Setup neoconf.nvim
