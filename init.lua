@@ -9,5 +9,6 @@ require("config.lazy")
 -- Set color scheme
 vim.cmd("colorscheme tokyonight-night")
 
+-- Color overrides
 local windowSeparatorColor = "#392c75"
 vim.cmd("hi WinSeparator guifg=" .. windowSeparatorColor)
