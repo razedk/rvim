@@ -36,7 +36,7 @@ local function set_key_mappings(args)
 	opts = { buffer = args.buf, silent = true, desc = "Goto declaration" }
 	set("n", "<c-]>", vim.lsp.buf.declaration, opts)
 	set("n", "<leader>lgc", vim.lsp.buf.declaration, opts)
-
+	
 	-- Refactor - rename
 	set("n", "<leader>lrr", vim.lsp.buf.rename, { buffer = args.buf, silent = true, desc = "Refactor - rename" })
 
@@ -181,6 +181,7 @@ return {
 			-- vim.lsp.enable("rust_analyzer")
 			vim.lsp.enable("jdtls")
 			vim.lsp.enable("eslint")
+			vim.lsp.enable("pyright")
 		end,
 	},
 	-- LSP Plugins
