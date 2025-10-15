@@ -1,7 +1,7 @@
 return {
   "saghen/blink.cmp",
   -- use a release tag to download pre-built binaries
-  version = "1.3.0",
+  version = "1.6.0",
   -- enabled = false,
   dependencies = {
     "giuxtaposition/blink-cmp-copilot",
