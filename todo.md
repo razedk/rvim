@@ -7,9 +7,9 @@
 - [x] Add fuzzy find config folder
 - [x] Setup terminal short keys
 - [x] Setup avante.nvim
+- [ ] Fix folding - use nvim-ufo
 
 ## Test
 
-- [ ] Telescope vs Picker vs FzfLua
-- [ ] Support for multiple projects
+- [ ] Support for multiple projects (search, lsp)
   - [ ] Setup neoconf.nvim
