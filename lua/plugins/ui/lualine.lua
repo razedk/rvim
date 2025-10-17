@@ -63,7 +63,7 @@ return {
 				-- display the current git branch, git differences, and any code diagnostics in section b
 				lualine_b = { "branch", "diff", "diagnostics" },
 				-- display the filename in section c
-				lualine_c = { "filename" },
+				lualine_c = { { "filename", path = 1 } },
 				-- display the file encoding type, os, and filetype in section x
 				lualine_x = {
 					"encoding",

@@ -36,7 +36,7 @@ local function set_key_mappings(args)
 	opts = { buffer = args.buf, silent = true, desc = "Goto declaration" }
 	set("n", "<c-]>", vim.lsp.buf.declaration, opts)
 	set("n", "<leader>lgc", vim.lsp.buf.declaration, opts)
-	
+
 	-- Refactor - rename
 	set("n", "<leader>lrr", vim.lsp.buf.rename, { buffer = args.buf, silent = true, desc = "Refactor - rename" })
 
@@ -51,12 +51,7 @@ local function set_key_mappings(args)
 	end, { buffer = args.buf, silent = true, desc = "Toggle inlay hints" })
 
 	-- diagnostics
-	set(
-		"n",
-		"<leader>xi",
-		vim.diagnostic.open_float,
-		{ buffer = args.buf, silent = true, desc = "Open floating diagnostics" }
-	)
+	set("n", "<leader>xi", vim.diagnostic.open_float, { buffer = args.buf, silent = true, desc = "Open floating diagnostics" })
 	set("n", "<leader>xk", function()
 		vim.diagnostic.jump({ float = true, count = -1 })
 	end, { buffer = args.buf, silent = true, desc = "Goto previous diagnostics" })
@@ -101,7 +96,8 @@ return {
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
+		lazy = false, -- Make sure we load this during startup so that lspconfig is available for other plugins
+		priority = 1000, -- Make sure to load this before all the other plugins
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
@@ -155,20 +151,27 @@ return {
 				run_on_start = true,
 			})
 
+			-- Copy the default cmd and append your java path
+			local cmd = vim.lsp.config.jdtls.cmd
+			print(vim.inspect(cmd))
+			-- table.insert(cmd, "--java-executable")
+			-- table.insert(cmd, "C:/Program Files/OpenJDK/jdk-22.0.2/bin/java.exe")
+
 			-- Configure language servers
-			-- vim.lsp.config("jdtls", {
-			-- 	settings = {
-			-- 		java = {
-			-- 			format = {
-			-- 				enabled = true,
-			-- 				settings = {
-			-- 					url = vim.fn.stdpath("config") .. "/java/beumer-eclipse-formatter.xml",
-			-- 					profile = "Crisplant formatter", -- This should match the profile name in the XML
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
+			vim.lsp.config("jdtls", {
+				cmd = cmd,
+				settings = {
+					java = {
+						format = {
+							enabled = true,
+							settings = {
+								url = vim.fn.stdpath("config") .. "/java/beumer-eclipse-formatter.xml",
+								profile = "Crisplant formatter", -- This should match the profile name in the XML
+							},
+						},
+					},
+				},
+			})
 
 			-- Enable language servers
 			vim.lsp.enable("lua_ls")

@@ -1,7 +1,8 @@
 return {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
+	"folke/snacks.nvim",
+	priority = 1000,
+	lazy = false,
+  -- stylua: ignore start
   keys = {
     { "<leader>bd",      function() Snacks.bufdelete() end,                                      desc = "Delete Buffer" },
     -- Top Pickers & Explorer
@@ -56,28 +57,30 @@ return {
     -- LSP
     { "gsd",             function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
     { "gsD",             function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
-    { "gsr",             function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
+    { "gsr",             function() Snacks.picker.lsp_references() end,                          desc = "References", nowait = true },
     { "gI",              function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
     { "gy",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
     { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
     { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
   },
-  ---@type snacks.Config
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    explorer = { enabled = false },
-    indent = { enabled = true, only_current = true, animate = { enabled = false } },
-    input = { enabled = true },
-    picker = { enabled = true },
-    notifier = { enabled = false },
-    quickfile = { enabled = true },
-    scope = { enabled = false },
-    scroll = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
-  },
+	-- stylua: ignore end
+
+	---@type snacks.Config
+	opts = {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
+		bigfile = { enabled = true },
+		dashboard = { enabled = true },
+		explorer = { enabled = false },
+		indent = { enabled = true, only_current = true, animate = { enabled = false } },
+		input = { enabled = true },
+		picker = { enabled = true },
+		notifier = { enabled = false },
+		quickfile = { enabled = true },
+		scope = { enabled = false },
+		scroll = { enabled = true },
+		statuscolumn = { enabled = true },
+		words = { enabled = true },
+	},
 }
