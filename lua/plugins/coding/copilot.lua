@@ -10,12 +10,12 @@ return {
 				enabled = true,
 				auto_trigger = true,
 				hide_during_completion = true,
-				keymap = {
-					accept = "<C-l>",
-					next = "<C-]>",
-					prev = "<C-[>",
-					dismiss = "<C-x>",
-				},
+				-- keymap = {
+				-- 	accept = "<M-l>",
+				-- 	next = "<M-]>",
+				-- 	prev = "<M-[>",
+				-- 	dismiss = "<C-]>",
+				-- },
 			},
 			panel = { enabled = false },
 			filetypes = {
