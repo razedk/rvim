@@ -91,6 +91,24 @@ local function setup_auto_cmd()
 	})
 end
 
+local function get_jdtls_cache_dir()
+	return vim.fn.stdpath("cache") .. "/jdtls"
+end
+
+local function get_jdtls_workspace_dir()
+	return get_jdtls_cache_dir() .. "/workspace"
+end
+
+local function get_jdtls_jvm_args()
+	local env = os.getenv("JDTLS_JVM_ARGS")
+	local args = {}
+	for a in string.gmatch((env or ""), "%S+") do
+		local arg = string.format("--jvm-arg=%s", a)
+		table.insert(args, arg)
+	end
+	return unpack(args)
+end
+
 return {
 	{ "folke/neoconf.nvim", cmd = "Neoconf", opts = {} },
 	{
@@ -151,15 +169,31 @@ return {
 				run_on_start = true,
 			})
 
-			-- Copy the default cmd and append your java path
-			local cmd = vim.lsp.config.jdtls.cmd
-			print(vim.inspect(cmd))
-			-- table.insert(cmd, "--java-executable")
-			-- table.insert(cmd, "C:/Program Files/OpenJDK/jdk-22.0.2/bin/java.exe")
-
-			-- Configure language servers
+			-- Configure Java language servers
 			vim.lsp.config("jdtls", {
-				cmd = cmd,
+				cmd = function(dispatchers, config)
+					local workspace_dir = get_jdtls_workspace_dir()
+					local data_dir = workspace_dir
+
+					if config.root_dir then
+						data_dir = data_dir .. "/" .. vim.fn.fnamemodify(config.root_dir, ":p:h:t")
+					end
+
+					local config_cmd = {
+						"jdtls",
+						"-data",
+						data_dir,
+						"--java-executable",
+						"C:/Program Files/OpenJDK/jdk-22.0.2/bin/java.exe",
+						get_jdtls_jvm_args(),
+					}
+
+					return vim.lsp.rpc.start(config_cmd, dispatchers, {
+						cwd = config.cmd_cwd,
+						env = config.cmd_env,
+						detached = config.detached,
+					})
+				end,
 				settings = {
 					java = {
 						format = {
