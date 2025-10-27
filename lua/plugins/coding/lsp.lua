@@ -208,7 +208,7 @@ return {
 			})
 
 			-- Enable language servers
-			vim.lsp.enable("lua_ls")
+			-- vim.lsp.enable("lua_ls")
 			-- 		vim.lsp.enable("ols")
 			-- 		vim.lsp.enable("zls")
 			-- 		vim.lsp.enable("clangd")
@@ -217,8 +217,8 @@ return {
 			vim.lsp.enable("html")
 			-- vim.lsp.enable("rust_analyzer")
 			vim.lsp.enable("jdtls")
-			vim.lsp.enable("eslint")
-			vim.lsp.enable("pyright")
+			-- vim.lsp.enable("eslint")
+			-- vim.lsp.enable("pyright")
 		end,
 	},
 	-- LSP Plugins

@@ -51,7 +51,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Native 0.11 function
 vim.opt.foldlevel = 99
-vim.opt.foldenable = false
+vim.opt.foldenable = true
 
 -- Session options
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
