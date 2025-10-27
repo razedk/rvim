@@ -1,3 +1,32 @@
+-- Custom action to send selected items to a new buffer
+local function CustomSnackSendItemsToNewBuffer(picker, items)
+	-- Get all items (or selected items if any are selected)
+	local results = #items > 0 and items or picker:items()
+
+	-- Create new buffer
+	-- local buf = vim.api.nvim_create_buf(true, true) -- (listed=true, scratch=true)
+	local buf = vim.api.nvim_create_buf(true, false) -- (listed=true, scratch=true)
+	vim.api.nvim_set_current_buf(buf)
+
+	-- Extract text from items
+	local lines = {}
+	for _, item in ipairs(results) do
+		-- item.text contains the display text
+		-- item.file, item.lnum, item.col for location info
+		if item.text then
+			table.insert(lines, item.text)
+		end
+	end
+
+	-- Set lines in buffer
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+	vim.bo[buf].buftype = "nofile"
+	-- vim.bo[buf].bufhidden = "wipe"
+	vim.schedule(function()
+		vim.cmd("only")
+	end)
+end
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -36,7 +65,6 @@ return {
     { '<leader>s"',      function() Snacks.picker.registers() end,                               desc = "Registers" },
     { '<leader>s/',      function() Snacks.picker.search_history() end,                          desc = "Search History" },
     { "<leader>sa",      function() Snacks.picker.autocmds() end,                                desc = "Autocmds" },
-    { "<leader>sb",      function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
     { "<leader>sc",      function() Snacks.picker.command_history() end,                         desc = "Command History" },
     { "<leader>sC",      function() Snacks.picker.commands() end,                                desc = "Commands" },
     { "<leader>sd",      function() Snacks.picker.diagnostics() end,                             desc = "Diagnostics" },
@@ -75,12 +103,27 @@ return {
 		explorer = { enabled = false },
 		indent = { enabled = true, only_current = true, animate = { enabled = false } },
 		input = { enabled = true },
-		picker = { enabled = true },
 		notifier = { enabled = false },
 		quickfile = { enabled = true },
 		scope = { enabled = false },
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
+		picker = {
+			enabled = true,
+			matcher = {
+				fuzzy = false, -- Disable fuzzy matching globally
+			},
+			win = {
+				input = {
+					keys = {
+						["<C-x>"] = { "send_items_to_new_buffer", mode = { "n", "i" } },
+					},
+				},
+			},
+			actions = {
+				send_items_to_new_buffer = CustomSnackSendItemsToNewBuffer,
+			},
+		},
 	},
 }
