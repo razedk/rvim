@@ -32,15 +32,15 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Fix folding issues with Tree-sitter and LSP
 --
 -- ************************************************************************ --
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
-	callback = function()
-		-- Give time for Tree-sitter/LSP/syntax to initialize
-		vim.defer_fn(function()
-			if vim.wo.foldmethod == "expr" or vim.wo.foldmethod == "syntax" then
-				-- Force fold recalculation
-				vim.cmd("normal! zx")
-			end
-		end, 200)
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		-- Give time for Tree-sitter/LSP/syntax to initialize
+-- 		vim.defer_fn(function()
+-- 			if vim.wo.foldmethod == "expr" or vim.wo.foldmethod == "syntax" then
+-- 				-- Force fold recalculation
+-- 				vim.cmd("normal! zx")
+-- 			end
+-- 		end, 200)
+-- 	end,
+-- })
