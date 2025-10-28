@@ -12,13 +12,12 @@
   - [x] Grep open files - works out of the box with <leader>sB
   - [x] Send output to quickfix list - works out of the box with Ctrl-q
   - [x] Send output to new buffer - fixed - works best with <leader>sb - Press Ctrl-x to send to new buffer
-- [ ] Find out why cursor sometimes moves backwards
+- [x] Find out why cursor sometimes moves backwards - caused by folding fix in features.lua
 - [ ] Setup plantuml.nvim
 
 ## Bugs
 
-[ ] Fix keyboard mapping for Picker - Ctrl-w curently clears the search result meaning it is not possible to move between windows
-
+- [x] Fix keyboard mapping for Picker - Ctrl-w curently clears the search result - not an issue, use Alt-w instead
 - [x] Find out why ESC does not work in INSERT mode
 
 ## Test
