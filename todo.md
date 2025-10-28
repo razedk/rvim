@@ -12,7 +12,7 @@
   - [x] Grep open files - works out of the box with <leader>sB
   - [x] Send output to quickfix list - works out of the box with Ctrl-q
   - [x] Send output to new buffer - fixed - works best with <leader>sb - Press Ctrl-x to send to new buffer
-- [ ] Find out why blink does not work
+- [ ] Find out why cursor sometimes moves backwards
 - [ ] Setup plantuml.nvim
 
 ## Bugs
