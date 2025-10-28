@@ -1,5 +1,7 @@
+local unnamed_counter = 0
+
 -- Custom action to send selected items to a new buffer
-local function CustomSnackSendItemsToNewBuffer(picker, items)
+local function send_items_to_new_buffer(picker, items)
 	-- Get all items (or selected items if any are selected)
 	local results = #items > 0 and items or picker:items()
 
@@ -21,6 +23,8 @@ local function CustomSnackSendItemsToNewBuffer(picker, items)
 	-- Set lines in buffer
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 	vim.bo[buf].buftype = "nofile"
+	unnamed_counter = unnamed_counter + 1
+	vim.api.nvim_buf_set_name(buf, string.format("[grep %d]", unnamed_counter))
 	-- vim.bo[buf].bufhidden = "wipe"
 	vim.schedule(function()
 		vim.cmd("only")
@@ -99,7 +103,7 @@ return {
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
+		dashboard = { enabled = false },
 		explorer = { enabled = false },
 		indent = { enabled = true, only_current = true, animate = { enabled = false } },
 		input = { enabled = true },
@@ -122,7 +126,7 @@ return {
 				},
 			},
 			actions = {
-				send_items_to_new_buffer = CustomSnackSendItemsToNewBuffer,
+				send_items_to_new_buffer = send_items_to_new_buffer,
 			},
 		},
 	},
