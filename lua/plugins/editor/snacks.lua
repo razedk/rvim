@@ -23,6 +23,7 @@ local function send_items_to_new_buffer(picker, items)
 	-- Set lines in buffer
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 	vim.bo[buf].buftype = "nofile"
+	vim.bo[buf].filetype = "log"
 	unnamed_counter = unnamed_counter + 1
 	vim.api.nvim_buf_set_name(buf, string.format("[grep %d]", unnamed_counter))
 	-- vim.bo[buf].bufhidden = "wipe"
